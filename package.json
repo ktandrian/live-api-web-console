@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gcloud run deploy fyber-live --source=. --region=asia-southeast1 --project=kentandrian-dialogflow"
   },
   "eslintConfig": {
     "extends": [
@@ -44,14 +45,15 @@
   },
   "devDependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@google-cloud/dialogflow-cx": "4.9.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.17.13",
     "@types/node": "^16.18.119",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@types/lodash": "^4.17.13",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },
