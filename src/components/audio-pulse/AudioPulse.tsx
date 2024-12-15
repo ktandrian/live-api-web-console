@@ -55,7 +55,9 @@ export default function AudioPulse({ active, volume, hover }: AudioPulseProps) {
         .map((_, i) => (
           <div
             key={i}
-            ref={(el) => (lines.current[i] = el!)}
+            ref={(el) => {
+              lines.current[i] = el! as HTMLDivElement;
+            }}
             style={{ animationDelay: `${i * 133}ms` }}
           />
         ))}

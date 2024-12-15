@@ -50,7 +50,7 @@ const LogEntry = ({
   }: {
     message: StreamingLog["message"];
   }) => ReactNode;
-}): JSX.Element => (
+}): React.JSX.Element => (
   <li
     className={cn(
       `plain-log`,
@@ -125,7 +125,7 @@ const ToolCallLog = ({ message }: Message) => {
   );
 };
 
-const ToolCallCancellationLog = ({ message }: Message): JSX.Element => (
+const ToolCallCancellationLog = ({ message }: Message): React.JSX.Element => (
   <div className={cn("rich-log tool-call-cancellation")}>
     <span>
       {" "}
@@ -141,7 +141,7 @@ const ToolCallCancellationLog = ({ message }: Message): JSX.Element => (
   </div>
 );
 
-const ToolResponseLog = ({ message }: Message): JSX.Element => (
+const ToolResponseLog = ({ message }: Message): React.JSX.Element => (
   <div className={cn("rich-log tool-response")}>
     {(message as ToolResponseMessage).toolResponse.functionResponses.map(
       (fc) => (
@@ -154,7 +154,7 @@ const ToolResponseLog = ({ message }: Message): JSX.Element => (
   </div>
 );
 
-const ModelTurnLog = ({ message }: Message): JSX.Element => {
+const ModelTurnLog = ({ message }: Message): React.JSX.Element => {
   const serverContent = (message as ServerContentMessage).serverContent;
   const { modelTurn } = serverContent as ModelTurn;
   const { parts } = modelTurn;
