@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-import { useRef, useState } from "react";
-import "./App.scss";
-import { LiveAPIProvider } from "./contexts/LiveAPIContext";
-import SidePanel from "./components/side-panel/SidePanel";
-import { FyberTravelAgent } from "./components/fyber-travel/Agent";
-import ControlTray from "./components/control-tray/ControlTray";
+import ControlTray from "@/components/control-tray/ControlTray";
+import { FyberTravelAgent } from "@/components/fyber-travel/Agent";
+import SidePanel from "@/components/side-panel/SidePanel";
+import { LiveAPIProvider } from "@/contexts/LiveAPIContext";
 import cn from "classnames";
+import { useRef, useState } from "react";
 
-const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
+import "./App.scss";
+
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
-  throw new Error("set REACT_APP_GEMINI_APIK_KEY in .env");
+  throw new Error("set NEXT_PUBLIC_GEMINI_APIK_KEY in .env");
 }
 
 const host = "generativelanguage.googleapis.com";

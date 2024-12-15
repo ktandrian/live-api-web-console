@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { sendQuery } from "@/actions/send-query";
 import { type FunctionDeclaration, SchemaType } from "@google/generative-ai";
-import { memo, useEffect, useRef, useState } from "react";
-import vegaEmbed from "vega-embed";
+import { memo, useEffect, useState } from "react";
 import { useLiveAPIContext } from "../../contexts/LiveAPIContext";
-// import { detectIntent } from "../../lib/dialogflow-cx";
 import { ToolCall } from "../../multimodal-live-types";
 import "./agent.scss";
 
@@ -39,23 +38,8 @@ const declaration: FunctionDeclaration = {
   },
 };
 
-// const sendQuery = async (query: string) => {
-//   const result = await detectIntent({
-//     query: {
-//       content: query,
-//       type: "text",
-//     },
-//     projectId: "kentandrian-dialogflow",
-//     location: "asia-southeast1",
-//     agentId: "de52b0b6-7c22-4fb2-a606-0d2f84f2487a",
-//     sessionId: "de52b0b6-7c22-4fb2-a606-0d2f84f2487a",
-//   });
-//   return result.agentResponses;
-// };
-
 function FyberTravelAgentComp() {
   const [selectedVoice, setSelectedVoice] = useState("Aoede");
-  const [jsonString, setJSONString] = useState<string>("");
   const { client, setConfig } = useLiveAPIContext();
 
   useEffect(() => {
@@ -76,6 +60,9 @@ function FyberTravelAgentComp() {
             The customer might ask in any of these languages: English, Indonesia, Vietnamese, Mandarin.
             IDs (booking ID, profile ID, etc) should always be pronounced individually digit by digit.
             Do not answer things unrelated to Traveloka.`,
+          },
+          {
+            text: "Greet the customer with: Hi, welcome to Traveloka. I am Traveloka chatbot, your one stop solution for all your travel needs. How can I assist you?"
           },
           {
             text: `
@@ -188,6 +175,9 @@ function FyberTravelAgentComp() {
             `,
           },
           {
+            text: "If there is a question you cannot answer, send the customer utterance to 'send_query' function that I have provided you with."
+          },
+          {
             text: "To finish the conversation: Have a great day and thank you for using Traveloka."
           }
         ],
@@ -201,14 +191,23 @@ function FyberTravelAgentComp() {
   }, [setConfig, selectedVoice]);
 
   useEffect(() => {
-    const onToolCall = (toolCall: ToolCall) => {
+    const onToolCall = async (toolCall: ToolCall) => {
       console.log(`got toolcall`, toolCall);
       const fc = toolCall.functionCalls.find(
         (fc) => fc.name === declaration.name
       );
       if (fc) {
-        const str = (fc.args as any).query;
-        setJSONString(str);
+        const str = (fc.args as { query: string }).query;
+        console.log(str);
+        // setJSONString(str);
+        const response = await sendQuery(str);
+        console.log(response);
+        client.sendToolResponse({
+          functionResponses: toolCall.functionCalls.map((fc) => ({
+            response: { output: { text: response } },
+            id: fc.id,
+          })),
+        })
       }
       // send data for the response of your tool call
       // in this case Im just saying it was successful
@@ -231,21 +230,12 @@ function FyberTravelAgentComp() {
     };
   }, [client]);
 
-  const embedRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (embedRef.current && jsonString) {
-      vegaEmbed(embedRef.current, JSON.parse(jsonString));
-    }
-  }, [embedRef, jsonString]);
-
   const handleVoiceSelection = (label: string) => {
     setSelectedVoice(label);
   };
 
   return (
     <div>
-      <div className="vega-embed" ref={embedRef} />
       <h1 className="title">Welcome to FyberTravel Live!</h1>
 
       <div className="section">
