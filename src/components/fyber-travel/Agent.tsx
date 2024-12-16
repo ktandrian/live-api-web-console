@@ -178,7 +178,7 @@ function FyberTravelAgentComp() {
             text: "If there is a question you cannot answer, send the customer utterance to 'send_query' function that I have provided you with."
           },
           {
-            text: "To finish the conversation: Have a great day and thank you for using Traveloka."
+            text: "To finish the conversation: Thank you for contacting Traveloka. Have a great day!"
           }
         ],
       },
