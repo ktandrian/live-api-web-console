@@ -1,15 +1,24 @@
+import type { Metadata, Viewport } from "next";
+
+export const metadata: Metadata = {
+  title: "FyberTravel Live - Console",
+  description: "Live agent chat console for FyberTravel",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/logo192.png",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html>
       <head>
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta
-          name="description"
-          content="Web site created using create-react-app"
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -20,8 +29,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
           rel="stylesheet"
         />
-        <link rel="apple-touch-icon" href="/logo192.png" />
-        <title>Multimodal Live - Console</title>
       </head>
 
       <body>{children}</body>

@@ -209,20 +209,6 @@ function FyberTravelAgentComp() {
           })),
         })
       }
-      // send data for the response of your tool call
-      // in this case Im just saying it was successful
-      if (toolCall.functionCalls.length) {
-        setTimeout(
-          () =>
-            client.sendToolResponse({
-              functionResponses: toolCall.functionCalls.map((fc) => ({
-                response: { output: { sucess: true } },
-                id: fc.id,
-              })),
-            }),
-          200
-        );
-      }
     };
     client.on("toolcall", onToolCall);
     return () => {

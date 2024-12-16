@@ -25,7 +25,6 @@ export const audioContext: (
 ) => Promise<AudioContext> = (() => {
   const didInteract = new Promise((res) => {
     if (typeof window !== "undefined") {
-      console.log("typeof window", typeof window)
       window.addEventListener("pointerdown", res, { once: true });
       window.addEventListener("keydown", res, { once: true });
     }
