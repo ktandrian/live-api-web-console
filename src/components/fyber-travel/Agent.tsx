@@ -66,6 +66,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
+            Topic: User wants to check their travel booking status.
             Learn this conversation flow (remember, booking ID and profile ID should always be pronounced individually digit by digit):
 
             Customer: Hi
@@ -94,17 +95,24 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
+            Topic: User is asking for information about flight rescheduling fee.
+            Data needed: type of flight (domestic or international) and currency.
+
             Learn this conversation flow:
             
             Customer: What is reschedule fee for domestic flights in IDR?
-            Agent: The reschedule fee for domestic flights is IDR 25,000.
+            Agent: The reschedule fee for domestic flights starts at IDR 25,000.
             
             Customer: What is reschedule fee for domestic flights in MYR?
-            Agent: The reschedule fee for domestic flights is MYR 5.
+            Agent: The reschedule fee for domestic flights starts at MYR 5.
+
+            Customer: What is reschedule fee for international flights in MYR?
+            Agent: The reschedule fee for domestic flights starts at MYR 15.
             `,
           },
           {
             text: `
+            Topic: User is asking for information about hotel refund policy.
             Learn this conversation flow:
             
             Customer: What is the hotel refund policy?
@@ -113,6 +121,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
+            Topic: User is asking for information about how to reschedule a flight.
             Learn this conversation flow:
             
             Customer: how do I reschedule my flight?
@@ -121,6 +130,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
+            Topic: User is asking for information about how to correct a passenger's name.
             Learn this conversation flow:
             
             Customer: how do I correct the passenger's name?
@@ -129,6 +139,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
+            Topic: User is asking for information about how to cancel a hotel booking.
             Learn this conversation flow:
             
             Customer: how do I cancel a hotel booking?
@@ -137,6 +148,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
+            Topic: User wants to cancel a hotel booking.
             Learn this conversation flow:
             
             Customer: I want to cancel my hotel booking
