@@ -20,10 +20,5 @@
     "plugins": [{ "name": "next" }]
   },
   "include": ["src", "src/**/*", ".next/types/**/*.ts"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  },
   "exclude": ["node_modules"]
 }
