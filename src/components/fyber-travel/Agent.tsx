@@ -96,8 +96,11 @@ function FyberTravelAgentComp() {
             text: `
             Learn this conversation flow:
             
-            Customer: What is Reschedule Domestic fee in MYR and IDR?
-            Agent: The Reschedule Domestic fee is MYR 15 or IDR 25,000.
+            Customer: What is reschedule fee for domestic flights in IDR?
+            Agent: The reschedule fee for domestic flights is IDR 25,000.
+            
+            Customer: What is reschedule fee for domestic flights in MYR?
+            Agent: The reschedule fee for domestic flights is MYR 5.
             `,
           },
           {
