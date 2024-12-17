@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import "./index.css";
 
 export const metadata: Metadata = {
   title: "FyberTravel Live - Console",
