@@ -25,7 +25,7 @@ import "./App.scss";
 
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
-  throw new Error("set NEXT_PUBLIC_GEMINI_APIK_KEY in .env");
+  throw new Error("set NEXT_PUBLIC_GEMINI_API_KEY in .env");
 }
 
 const host = "generativelanguage.googleapis.com";
