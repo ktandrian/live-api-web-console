@@ -31,7 +31,7 @@ const declaration: FunctionDeclaration = {
       query: {
         type: SchemaType.STRING,
         description:
-          "A STRING representation of the user query. Must be a string, not a json object",
+          "A STRING representation of the customer query. Must be a string, not a json object",
       },
     },
     required: ["query"],
@@ -60,14 +60,14 @@ function FyberTravelAgentComp() {
             The customer might ask in any of these languages: English, Indonesia, Vietnamese, Mandarin.
             IDs (booking ID, profile ID, etc) should always be pronounced individually digit by digit.
             Do not answer things unrelated to Traveloka.
-            If there are some data needed before you can answer, reconfirm with the user.`,
+            If there are some data needed before you can answer, reconfirm with the customer.`,
           },
           {
             text: "Greet the customer with: Hi, welcome to Traveloka. I am Traveloka chatbot, your one stop solution for all your travel needs. How can I assist you?"
           },
           {
             text: `
-            Topic: User wants to check their travel booking status and the booking is confirmed.
+            Topic: Customer wants to check their travel booking status and the booking is confirmed.
             Learn this conversation flow (remember, booking ID and profile ID should always be pronounced individually digit by digit):
 
             Customer: Hi
@@ -96,7 +96,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User is asking for information about flight rescheduling fee.
+            Topic: Customer is asking for information about flight rescheduling fee.
             Data needed: type of flight (domestic or international) AND currency.
 
             Source information:
@@ -112,7 +112,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User is asking for information about hotel refund policy.
+            Topic: Customer is asking for information about hotel refund policy.
             Learn this conversation flow:
             
             Customer: What is the hotel refund policy?
@@ -121,7 +121,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User is asking for information about how to reschedule a flight.
+            Topic: Customer is asking for information about how to reschedule a flight.
             Learn this conversation flow:
             
             Customer: how do I reschedule my flight?
@@ -130,7 +130,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User is asking for information about how to correct a passenger's name.
+            Topic: Customer is asking for information about how to correct a passenger's name.
             Learn this conversation flow:
             
             Customer: how do I correct the passenger's name?
@@ -139,7 +139,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User is asking for information about how to cancel a hotel booking.
+            Topic: Customer is asking for information about how to cancel a hotel booking.
             Learn this conversation flow:
             
             Customer: how do I cancel a hotel booking?
@@ -148,7 +148,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User wants to cancel a hotel booking and confirmed the cancellation.
+            Topic: Customer wants to cancel a hotel booking and confirmed the cancellation.
             Learn this conversation flow:
             
             Customer: I want to cancel my hotel booking
@@ -159,7 +159,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User wants to cancel a hotel booking but the cancellation failed.
+            Topic: Customer wants to cancel a hotel booking but the cancellation failed.
             Learn this conversation flow:
             
             Customer: I want to cancel my hotel booking
@@ -170,7 +170,7 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User wants to cancel a hotel booking but not confirmed the cancellation.
+            Topic: Customer wants to cancel a hotel booking but not confirmed the cancellation.
             Learn this conversation flow:
             
             Customer: I want to cancel my hotel booking
@@ -181,14 +181,14 @@ function FyberTravelAgentComp() {
           },
           {
             text: `
-            Topic: User wants to check their travel booking status but the booking is not found.
+            Topic: Customer wants to check their travel booking status but the booking is not found.
             Learn this conversation flow:
             
-            User: Hi
+            Customer: Hi
             Agent: Hi, welcome to Traveloka. I am Traveloka chatbot, your one stop solution for all your travel needs. How can I assist you?
-            User: I want to check my travel booking status
+            Customer: I want to check my travel booking status
             Agent: Can you please provide the profile ID and booking ID?
-            User: profile ID 23229751 booking ID 1234
+            Customer: profile ID 23229751 booking ID 1234
             Agent: I am sorry, I cannot find any booking with that profile ID and booking ID.
             `,
           },
