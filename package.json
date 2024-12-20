@@ -11,11 +11,13 @@
     "react-dom": "19.0.0",
     "react-icons": "5.3.0",
     "react-select": "5.9.0",
+    "react-syntax-highlighter": "15.6.1",
     "sass": "1.80.6",
     "zustand": "5.0.2"
   },
   "scripts": {
     "dev": "next dev --turbo",
+    "start-https": "HTTPS=true react-scripts start",
     "start": "next start",
     "build": "next build",
     "deploy": "gcloud run deploy fyber-live --source=. --region=asia-southeast1 --project=kentandrian-dialogflow --port=3000"
@@ -33,6 +35,7 @@
     "@types/node": "20.17.10",
     "@types/react": "19.0.1",
     "@types/react-dom": "19.0.2",
+    "@types/react-syntax-highlighter": "15.5.13",
     "typescript": "5.7.2"
   }
 }
