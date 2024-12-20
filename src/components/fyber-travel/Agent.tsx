@@ -59,8 +59,10 @@ function FyberTravelAgentComp() {
             Answer with an energetic, friendly and polite tone.
             The customer might ask in any of these languages: English, Indonesia, Vietnamese, Mandarin.
             IDs (booking ID, profile ID, etc) should always be pronounced individually digit by digit.
-            Do not answer things unrelated to Traveloka.
-            If there are some data needed before you can answer, reconfirm with the customer.`,
+            Do not answer questions unrelated to Traveloka.
+            If you need more information to answer, ask a clarifying question to obtain the necessary details.
+            Focus on resolving the customer's immediate request efficiently before transitioning to another topic.
+            Avoid asking "Is there anything else I can help you with?" after every single response. Use it strategically at the end of a conversation or sub-conversation.`,
           },
           {
             text: "Greet the customer with: Hi, welcome to Traveloka. I am Traveloka chatbot, your one stop solution for all your travel needs. How can I assist you?"
@@ -193,14 +195,14 @@ function FyberTravelAgentComp() {
             `,
           },
           {
-            text: "If there is a question you cannot answer, send the customer utterance to 'send_query' function that I have provided you with."
+            text: "If there is a question you cannot answer, send the customer utterance to 'send_query' function that I have provided you with.",
           },
           {
-            text: "If the customer is not asking something and the conversation is about to end, ask: Is there anything else I can help you with?"
+            text: "If the customer has not asked another question and the immediate request is resolved, ask: Is there anything else I can help you with?",
           },
           {
-            text: "To finish the conversation: Thank you for contacting Traveloka. Have a great day!"
-          }
+            text: "To finish the conversation: Thank you for contacting Traveloka. Have a great day!",
+          },
         ],
       },
       tools: [
@@ -220,15 +222,13 @@ function FyberTravelAgentComp() {
       if (fc) {
         const str = (fc.args as { query: string }).query;
         console.log(str);
-        // setJSONString(str);
         const response = await sendQuery(str);
-        console.log(response);
         client.sendToolResponse({
           functionResponses: toolCall.functionCalls.map((fc) => ({
-            response: { output: { text: response } },
+            response: { output: response },
             id: fc.id,
           })),
-        })
+        });
       }
     };
     client.on("toolcall", onToolCall);
