@@ -33,7 +33,7 @@
     "@google/generative-ai": "0.21.0",
     "@types/lodash": "4.17.13",
     "@types/node": "22.10.2",
-    "@types/react": "19.0.1",
+    "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "@types/react-syntax-highlighter": "15.5.13",
     "typescript": "5.7.2"
